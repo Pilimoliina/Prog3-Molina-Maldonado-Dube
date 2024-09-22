@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Busqueda from '../Busqueda/busqueda';
+import {Link} from "react-router-dom"
 
 
 
@@ -9,7 +10,15 @@ class PeliculasHijo2 extends Component {
     constructor (props) {
         super (props)
         this.state = {
-            peliculas: []
+            peliculas: [],
+   
+             verDescripcion: false,
+     
+            overview: props.overview,
+
+            favoritosBoton: "Agregar a favoritos", 
+            favoritos:{},
+            peliculaSeleccionada: null, 
         }
         console.log('Soy el constructor')
     }
@@ -50,22 +59,43 @@ class PeliculasHijo2 extends Component {
 
     }
 
+    favorito(idPelicula) {
+        this.setState(prevState => ({
+            favoritos: {
+                ...prevState.favoritos,
+                [idPelicula]: !prevState.favoritos[idPelicula] // Alterna el estado actual de favorito
+            }
+        }));
+    }
+
+
     render(){
         console.log('Soy el render')
+        const id = this.state.id
         return (
+            
             <section>
+                <h1 className="titulo-peli">Peliculas en cartelera</h1> 
                 <div  className= 'comp-peliculas'>
+                         
                 {
                     this.state.peliculas.length > 0
                     ? 
                     (
                         this.state.peliculas.slice(0,5).map((elm) => (
-                            <div  className= 'pelicula'>
-                                <img  className="fotoPeli"src={`https://image.tmdb.org/t/p/w300${elm.poster_path}`}
-                                    alt={elm.title}/>
-                                <h3>{elm.title}</h3>
-                              
-            
+                            <div key={elm.id}  className= 'pelicula'> 
+                             <Link to=  {`/Detalle/id/${elm.id}`}>
+                                
+                                    <img  className="fotoPeli"src={`https://image.tmdb.org/t/p/w300${elm.poster_path}`} alt={elm.title}/>
+                                    <h3 className='Tpeli'>{elm.title}</h3> 
+                                    {this.state.verDescripcion== false ? null : <p>{this.elm.overview}</p> }
+                
+                                 
+                            
+                          </Link>  
+                                 
+                                
+
                             </div>
                         ))
                     ) 

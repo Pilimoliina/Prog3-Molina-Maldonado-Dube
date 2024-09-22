@@ -1,6 +1,7 @@
 import React from "react";
 import './styles.css';
 import Opcion from "../Opcion";
+import {Link} from 'react-router-dom'
 
 const opciones = [
     {
@@ -20,7 +21,8 @@ const opciones = [
 function Header(props){
     return(
         <nav>
-        <img className= "logo" src="img/logoAura.png" alt="logo"/> 
+            <Link to ="/"> <img className= "logo" src="img/logoAura.png" alt="logo"/></Link>
+        
         <ul className="main-nav">
             {opciones.map((elemento)=> <Opcion data= {elemento}/>)}
         </ul>

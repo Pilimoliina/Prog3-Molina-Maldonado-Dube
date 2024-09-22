@@ -4,8 +4,10 @@ nav{
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0 20px;
-    background-color: #000000;
-    color: #ffffff
+    /* background-color: #000000; */
+    color: #ffffff;
+    background-image:  url('/public/img/header.png') ;
+    background-size: contain;
 }
 
 nav ul {
@@ -17,21 +19,19 @@ nav ul {
 }
 
 .logo{ 
-    max-height: 50px; /* Ajusta la altura máxima del logo según lo necesites */
+    max-height: 30px; /* Ajusta la altura máxima del logo según lo necesites */
     width: auto; 
-    margin-top: 5px;
+    margin: 10px;
     padding-left: 5px;
-
-
 }
 
-.main-nav li,
-.user li {
+.main-nav li {
     margin: 0 10px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
+   
 }
 
 .main-nav li:first-child {
@@ -61,3 +61,4 @@ main {
     padding: 0 30px;
     
 }
+
