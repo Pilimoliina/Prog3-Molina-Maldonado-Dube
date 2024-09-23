@@ -3,7 +3,7 @@ import Header from './components/Header'
 import Home from './screens/Home'
 import Favoritos from './screens/Favoritos'
 import Footer from './components/Footer'
-// import Gif from './components/Gif/Gif';
+import Gif from './components/Gif/gif'
 import Peliculas from './components/Peliculas/peliculas'
 // import NotFound from './screens/NotFound'
 import Detalle from "./screens/Detalle";
@@ -20,7 +20,7 @@ function App(props) {
       <Header />
 
         
-        {/* <Gif/> */}
+        <Gif/> 
         <Switch >
           <Route path='/' exact={true} component={Home} />
           {/* <Route path='/vertodasPopulares' component={todasPadrePopulares} />
