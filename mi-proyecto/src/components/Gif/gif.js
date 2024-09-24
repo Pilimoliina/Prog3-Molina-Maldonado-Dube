@@ -10,6 +10,13 @@ class Gif extends Component{
         }
     }
 
+    // apiCall(url, consecuencia){
+    //     fetch(url)
+    //     .then(response => response.json())
+    //     .then(data => consecuencia(data))
+    //     .catch(error=> console.log(error)
+    //     )
+    // }
 
 
     componentDidMount(){
@@ -20,6 +27,21 @@ class Gif extends Component{
           }, 1500);
     }
 
+    // mostrarGif = (data) => {
+    //     console.log(data);
+        
+    //    this.setState({
+    //     gif: data.data.images.original.url
+        
+
+    //    });
+        
+    // }
+    
+    // componentDidUpdate(){
+    //     console.log(" actualizadoop");
+        
+    // }
 
     render(){
         console.log("estoy renderizado");
@@ -28,14 +50,16 @@ class Gif extends Component{
         if (!this.state.gif ){ 
             contenido = (
             <img 
-                src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTl5dnR2OWtyczJmZWF0Yjg4d3J5MWVmNmg1d3phY3hjeXh6c2hvbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3AMRa6DRUhMli/giphy.webp?text=Cargando..."
+                src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnl1Ymg2MTN5emRueWoyY2FjN2lmZWY4OHllY29wN3I4cm5mMWMxYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GgfdLyWlHzKmMlpo89/giphy.webp?text=Cargando..."
                 alt="Cargando..."
+                width={300}
                 
               />
             );
             //<p> Cargando ....</p>
         }else{
-           contenido = <img src={this.state.gif} alt=""></img>
+         //   contenido = <img src={this.state.gif} alt=""></img>
+
         }
 
         return(

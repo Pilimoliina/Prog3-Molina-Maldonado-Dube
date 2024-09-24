@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Peliculas from "../Peliculas/peliculas";
 
 class Busqueda extends Component {
     constructor(props) {
@@ -21,24 +20,20 @@ class Busqueda extends Component {
 
     }
     filtrarPeliculas(nombrePelicula) {
-        const peliculasFiltradas = this.state.peliculas.filter(
-            (elm) => elm.title.toLowerCase().includes(nombrePelicula.toLowerCase())
-        )
+        const peliculasFiltradas = this.state.peliculas.filter((elm) => elm.title.toLowerCase().includes(nombrePelicula.toLowerCase()))
         this.setState({
             peliculas: peliculasFiltradas
         })
-
     }
     render() {
-        return ( 
-                <form onSubmit={(event) => this.evitarSubmit(event)}>
-                <input
+        return (
+            <form className="search" onSubmit={(event) => this.evitarSubmit(event)}>
+                <input className="input"
                     onChange={(event) => this.controlarInputs(event)}
                     value={this.state.valorInput1}
                 />
-                <button type='submit' >Enviar</button>
+                <button className="boton" type='submit' >BUSCAR</button>
             </form>
-            
         )
     }
 }

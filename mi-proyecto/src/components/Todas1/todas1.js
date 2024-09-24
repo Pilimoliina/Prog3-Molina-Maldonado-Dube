@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import Busqueda from '../Busqueda/busqueda';
 import {Link} from "react-router-dom"
 
 
-
 const APIKEY = 'b4162f48d94a73d5f95feab7a9a5c8de'
-class PeliculasHijo2 extends Component {
+class Todas1 extends Component {
     constructor (props) {
         super (props)
         this.state = {
@@ -18,7 +18,7 @@ class PeliculasHijo2 extends Component {
             favoritosBoton: "Agregar a favoritos", 
             favoritos:false,
             peliculaSeleccionada: null, 
-            
+            paginaACargar: 2
             
         }
         console.log('Soy el constructor')
@@ -26,7 +26,7 @@ class PeliculasHijo2 extends Component {
 
     componentDidMount() {
         console.log('Soy el didMount')
-        fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${APIKEY}`)
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${APIKEY}`)
         .then((resp) => resp.json())
         .then((data) => {
             console.log(data);
@@ -109,6 +109,15 @@ class PeliculasHijo2 extends Component {
         }));
     }
 
+    cargarMas(){
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${APIKEY}&page=${this.state.paginaACargar}`)
+        .then(resp => resp.json())
+        .then(data => this.setState({peliculas: this.state.peliculas.concat(data.results),
+        filtrarPeliculas: this.state.peliculas.concat(data.results),
+        paginaACargar: this.state.paginaACargar + 1
+    }))
+        .catch(err => console.log(err))
+    }
 
     render(){
         console.log('Soy el render')
@@ -116,19 +125,22 @@ class PeliculasHijo2 extends Component {
         return (
             
             <section>
-                <h1 className="titulo-peli">Peliculas en cartelera
-               <Link to = {'/vertodasCartelera'} >
-                                    <button className = 'botones-todas'> Ver todas </button>
-                                </Link>
-             </h1> 
-                 
-                <div  className= 'comp-peliculas'>
-                         
+                <h1 className="titulo-peli">Peliculas populares</h1> 
+               
+               <Busqueda filtrarPeliculas = {(nombre) => this.filtrarPeliculas(nombre)} /> 
+
+              <button className='botones-todas' onClick={()=> this.cargarMas()}>
+                                  Cargar mas
+              </button>
+              
+              <div  className= 'comp-peliculas'>
+                        
+             
                 {
                     this.state.peliculas.length > 0
                     ? 
                     (
-                        this.state.peliculas.slice(0,5).map((elm) => (
+                        this.state.peliculas.map((elm) => (
                             <div key={elm.id}  className= 'pelicula'> 
                              <Link to=  {`/Detalle/id/${elm.id}`}>
                                 
@@ -166,21 +178,19 @@ class PeliculasHijo2 extends Component {
                                     {this.state.favoritos[elm.id] ? "Quitar de favoritos" : "Agregar a favoritos"}
                                 </button>
 
-                               
-
                             </div>
                         ))
                     ) 
                     :
-                    <h1>Cargando...</h1>
+                    <h1 className='carga'>Cargando...</h1>
                 }
             </div>
             </section>
             
         )
     }
+    
 
 } 
 
-
-export default PeliculasHijo2;
+export default Todas1;

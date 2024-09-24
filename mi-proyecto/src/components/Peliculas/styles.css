@@ -97,11 +97,23 @@ form {
     color: #fffbfb; 
     border: 1px solid #f5a5c4; /* Rosa claro para el borde */
     border-radius: 5px; /* Bordes redondeados */
-    margin: 3px;
-    padding: 8px 10px; /* Espaciado interno */
+    margin: 3px ;
+    padding: 8px 8px; /* Espaciado interno */
     font-size: 11px; /* Tamaño del texto */
     cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
    
+}
+
+.botones-todas{
+    background-color: #262525; 
+    color: #fffbfb; 
+    border: 1px solid #f5a5c4; /* Rosa claro para el borde */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 3px ;
+    padding: 8px 8px; /* Espaciado interno */
+    font-size: 15px; /* Tamaño del texto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    margin-left: 92%;
 }
 
 .foto-detalle {

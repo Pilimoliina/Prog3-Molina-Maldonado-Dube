@@ -63,7 +63,7 @@ form {
     border-radius: 5px; /* Bordes redondeados */
     padding: 6px; /* Espaciado interno */
     max-width: 500px; /* Ancho máximo del formulario */
-    margin: 0 auto; /* Centra el formulario horizontalmente */
+    margin: 15px auto; /* Centra el formulario horizontalmente */
     background-color: #3e3e3e; /* Fondo blanco */
     box-shadow: 0 2px 4px rgba(41, 41, 41, 0.1); /* Sombra ligera */
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import './styles.css';
 import Opcion from "../Opcion";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const opciones = [
     {
@@ -13,22 +13,23 @@ const opciones = [
         ruta: "/favoritos"
     },
     {
-        nombre: "Ver Todas",
-        ruta:"/vertodas"
+        nombre: "Populares",
+        ruta:"/vertodasPopulares"
+    },
+    {
+        nombre: "En cartelera",
+        ruta:"/vertodasCartelera"
     }
 ]
 
 function Header(props){
     return(
         <nav>
-            <Link to ="/"> <img className= "logo" src="img/logoAura.png" alt="logo"/></Link>
-        
+        <Link to = "/"> <img className= "logo" src="img/logoAura.png" alt="logo"/> </Link>
         <ul className="main-nav">
             {opciones.map((elemento)=> <Opcion data= {elemento}/>)}
         </ul>
-        {/* <ul className="user">
-            <li>Walter White <img src="/img/user.jpg" alt=""/></li>
-        </ul> */}
+
     </nav>
     )
 }

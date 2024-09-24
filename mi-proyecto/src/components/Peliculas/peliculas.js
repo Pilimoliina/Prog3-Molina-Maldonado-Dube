@@ -11,7 +11,7 @@ function Peliculas() {
         
         <section className="todo">
             <div>
-                 <PeliculasHijo1  />
+                <PeliculasHijo1  />
                 <PeliculasHijo2  />
             </div>
         </section> 

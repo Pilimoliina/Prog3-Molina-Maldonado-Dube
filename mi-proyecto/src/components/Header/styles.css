@@ -25,13 +25,13 @@ nav ul {
     padding-left: 5px;
 }
 
-.main-nav li {
+.main-nav li,
+.user li {
     margin: 0 10px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
-   
 }
 
 .main-nav li:first-child {
@@ -61,4 +61,12 @@ main {
     padding: 0 30px;
     
 }
+
+.banner{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width:100%;
+    height: 300px;
+  }
 
