@@ -1,42 +1,44 @@
-import React, { Component } from "react";
-import PeliculasHijo1 from "../PeliculasHijo1/PeliculasHijo1";
-import './styles.css';
+import React, {Component} from "react";
+import {Link} from 'react-router-dom'
 
 class Favorito extends Component {
-    constructor(props) {
+    constructor(props){
         super(props)
-        this.state = {
-            favoritos: []
-        };
-    }
-    componentDidMount() {
-        let storage = localStorage.getItem("categoriaFavs")
-        if (storage !== null) {
-            let arrParseado = JSON.parse(storage);
-            arrParseado.map(id =>
-                fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=b4162f48d94a73d5f95feab7a9a5c8de`)
-                    .then((resp) => resp.json())
-                    .then((data) => {
-                        this.setState({
-                            favoritos: this.state.favoritos.concat(data)
-                        })
-                    })
-                    .catch((err) => console.log(err)))
-                ;
+        this.state={
+           esFavorito: false,
         }
     }
-    render() {
-        const { favoritos } = this.state;
-        return (
-            <>
-              
-                <div>
-                    {favoritos.length === 0 ? (<p>No tienes peliculas favoritas</p>)
-                        :
-                        (favoritos.map((elm, id) => (<PeliculasHijo1 key={id} elm={elm} />)))}</div>
-                     
-            </>
+
+    componentDidMount(){
+        let storage = localStorage.getItem('PeliculasFavoritas')
+        if(storage !== null){
+            let arrParseado = JSON.parse(storage)
+            let estaMiId = arrParseado.includes(this.props.data.id)
+            if(estaMiId){
+                this.setState({
+                    esFavorito: true
+                })
+            }
+        }
+        
+    }
+
+
+    render(){
+        const id = this.props.id
+        return(
+            <div>
+            <Link to={`/detalle/${id}`}>
+                    <article className="pelicula">
+                        <p>{this.props.data.nombre}</p>
+                    </article>
+            </Link>
+
+                
+            </div>
         )
     }
 }
+
 export default Favorito;
+
