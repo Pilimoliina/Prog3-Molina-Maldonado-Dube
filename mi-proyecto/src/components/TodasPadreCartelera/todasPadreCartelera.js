@@ -1,15 +1,12 @@
 import React from "react";
-import Todas1 from "../Todas1/todas1";
 import Todas2 from "../Todas2/todas2";
 
-function todasPadrePopulares() {
+function todasPadreCartelera() {
     return (
         <section className="todo">
-            <Todas1 />
-
-            
+            <Todas2 />
         </section> 
     )
 }
 
-export default todasPadrePopulares;
+export default todasPadreCartelera;

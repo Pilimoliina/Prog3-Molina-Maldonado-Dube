@@ -2,13 +2,13 @@ import React from "react";
 import Peliculas from "../components/Peliculas/peliculas";
 import Buscador from "../components/Buscador/buscador";
 
-function Home (){
+function Home (props){
     return(
 
     <React.Fragment>
 
         <main>
-        <Buscador/>
+        <Buscador location={props.location} history={props.history}/>
         <img className="banner" src="/img/AuraBanner.jpeg"></img>
         <Peliculas />
         

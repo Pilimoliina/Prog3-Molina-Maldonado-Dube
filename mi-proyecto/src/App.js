@@ -25,10 +25,10 @@ function App(props) {
         <Switch >
           <Route path='/' exact={true} component={Home} />
           <Route path='/vertodasPopulares' component={todasPadrePopulares} />
-          {/* <Route path='/vertodasCartelera' component={todasPadreCartelera} /> */}
+          {/* <Route path='/vertodasCartelera' component={todasPadreCartelera} />  */}
           <Route path='/favoritos' component={Favoritos} />  
-          <Route path="/Detalle/id/:id" component={Detalle}/>   
-          {/* <Route path="/Search" component={Search}/> */}
+          {/* <Route path="/Detalle/id/:id" component={Detalle}/>    */}
+          <Route path="/Search" component={Search}/>
           <Route path='' component={NotFound} />
           <Peliculas/> 
           
