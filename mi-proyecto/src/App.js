@@ -7,10 +7,10 @@ import Gif from './components/Gif/gif';
 import Peliculas from './components/Peliculas/peliculas'
 import NotFound from './screens/NotFound'
 import Detalle from "./screens/Detalle";
-// import Search from "./screens/Search";
+import Search from "./screens/Search";
 
 import todasPadrePopulares from './components/TodasPadrePopulares/todasPadrePopulares'
-// import todasPadreCartelera from './components/TodasPadreCartelera/todasPadreCartelera'
+import todasPadreCartelera from './components/TodasPadreCartelera/todasPadreCartelera'
 
 
 function App(props) {
@@ -25,9 +25,9 @@ function App(props) {
         <Switch >
           <Route path='/' exact={true} component={Home} />
           <Route path='/vertodasPopulares' component={todasPadrePopulares} />
-          {/* <Route path='/vertodasCartelera' component={todasPadreCartelera} />  */}
+          <Route path='/vertodasCartelera' component={todasPadreCartelera} /> 
           <Route path='/favoritos' component={Favoritos} />  
-          {/* <Route path="/Detalle/id/:id" component={Detalle}/>    */}
+          <Route path="/Detalle/id/:id" component={Detalle}/>   
           <Route path="/Search" component={Search}/>
           <Route path='' component={NotFound} />
           <Peliculas/> 

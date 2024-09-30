@@ -94,15 +94,15 @@ class Detalle extends Component {
                 <p>Duración: {pelicula.runtime} mins</p>
 
                 {/* Botón de favoritos para la película actual */}
-                {favoritos[id] ? (
-                    <button className="botones" onClick={() => this.sacarDeStorage(id)}>
+                {this.state.favoritos[pelicula.id]
+                    ? <button className="botones" onClick={() => this.sacarDeStorage(pelicula.id)}>
                         Sacar de favoritos
-                    </button>
-                ) : (
-                    <button className="botones" onClick={() => this.agregarAStorage(id)}>
+                      </button>
+                    : <button className="botones" onClick={() => this.agregarAStorage(pelicula.id)}>
                         Agregar a favoritos
-                    </button>
-                )}
+                      </button>}
+
+                {this.state.peliculaSeleccionada === id && <p>{pelicula.overview}</p>}
             </div>
         );
     }

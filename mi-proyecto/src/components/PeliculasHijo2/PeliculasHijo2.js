@@ -86,7 +86,7 @@ class PeliculasHijo2 extends Component {
         return (
             <section>
                 <h1 className="titulo-peli">Películas en cartelera
-                    <Link to={'/verTodasCartelera'}> <button className='botones-todas'> Ver todas </button> </Link>
+                    <Link to={'/vertodasCartelera'}> <button className='botones-todas'> Ver todas </button> </Link>
                 </h1>
 
                 <div className='comp-peliculas'>

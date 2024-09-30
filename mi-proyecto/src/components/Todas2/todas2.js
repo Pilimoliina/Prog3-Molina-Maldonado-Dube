@@ -30,9 +30,57 @@ class Todas2 extends Component {
             })
             .catch((err) => console.log(err));
 
-
+        // Cargar favoritos desde localStorage al montar el componente
+        this.actualizarFavoritos();
     }
 
+    actualizarFavoritos() {
+        let favoritos = localStorage.getItem('PeliculasFavoritas');
+        if (favoritos) {
+            // Parseamos los favoritos y creamos un objeto donde la clave es el id de la película
+            let favoritosParseados = JSON.parse(favoritos);
+            let favoritosObj = {};
+            favoritosParseados.forEach(id => {
+                favoritosObj[id] = true;
+            });
+            this.setState({
+                favoritos: favoritosObj
+            });
+        }
+    }
+
+    agregarAStorage(id) {
+        let favoritos = localStorage.getItem('PeliculasFavoritas');
+        let peliculasFavoritas = favoritos ? JSON.parse(favoritos) : [];
+
+        if (!peliculasFavoritas.includes(id)) {
+            peliculasFavoritas.push(id);
+            localStorage.setItem('PeliculasFavoritas', JSON.stringify(peliculasFavoritas));
+        }
+
+        this.setState(prevState => ({
+            favoritos: {
+                ...prevState.favoritos,
+                [id]: true
+            }
+        }));
+    }
+
+    sacarDeStorage(id) {
+        let favoritos = localStorage.getItem('PeliculasFavoritas');
+        if (favoritos) {
+            let peliculasFavoritas = JSON.parse(favoritos);
+            let nuevoFavoritos = peliculasFavoritas.filter(item => item !== id);
+            localStorage.setItem('PeliculasFavoritas', JSON.stringify(nuevoFavoritos));
+        }
+
+        this.setState(prevState => ({
+            favoritos: {
+                ...prevState.favoritos,
+                [id]: false
+            }
+        }));
+    }
 
     cargarMas() {
         fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${APIKEY}&page=${this.state.paginaACargar}`)
@@ -69,7 +117,13 @@ class Todas2 extends Component {
                                     <h3 className='Tpeli'>{elm.title}</h3>
                                 </Link>
 
-                                
+                                {this.state.favoritos[elm.id]
+                                    ? <button className="botones" onClick={() => this.sacarDeStorage(elm.id)}>
+                                        Sacar de favoritos
+                                      </button>
+                                    : <button className="botones" onClick={() => this.agregarAStorage(elm.id)}>
+                                        Agregar a favoritos
+                                      </button>}
 
                                 {this.state.peliculaSeleccionada === elm.id && <p>{elm.overview}</p>}
 
