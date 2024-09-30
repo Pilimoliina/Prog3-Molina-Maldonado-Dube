@@ -21,6 +21,11 @@
     margin: 12px;
     flex-direction: column;
     color: white;
+    transition: transform 0.3s ease;
+}
+
+.pelicula:hover {
+    transform: scale(1.05); /* Aumenta el tamaño al 105% */
 }
 
 .fotoPeli {
