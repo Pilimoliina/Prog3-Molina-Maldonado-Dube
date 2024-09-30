@@ -34,6 +34,16 @@ class Todas2 extends Component {
         this.actualizarFavoritos();
     }
 
+    filtrarPeliculas(nombrePelicula) {
+        const peliculasFiltradas = this.state.peliculas.filter(
+            (elm) => elm.title.toLowerCase().includes(nombrePelicula.toLowerCase())
+        )
+        this.setState({
+            peliculas: peliculasFiltradas
+        })
+
+    }
+
     actualizarFavoritos() {
         let favoritos = localStorage.getItem('PeliculasFavoritas');
         if (favoritos) {
